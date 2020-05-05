@@ -13,6 +13,16 @@
   background-image: linear-gradient(to right, #fff, #fff, #fff);
 }
 
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.hide{
+  display: none;
+}
+
 /**************** common css start ****************/
 /* line 3, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
 body {
@@ -3609,7 +3619,7 @@ ul {
 .regervation_part .btn_2 {
   margin-top: 10px;
   background-color: #fff !important;
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   font-weight: 500;
   color: #242429;
   font-size: 14px;
