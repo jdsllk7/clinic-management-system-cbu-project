@@ -1,0 +1,59 @@
+.m-t-10{
+    margin-top: 10px;
+}
+.m-t-100{
+    margin-top: 100px;
+}
+.m-t-200{
+    margin-top: 200px;
+}
+.m-t-300{
+    margin-top: 300px;
+}
+.border-1{
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+}
+.hand{
+    cursor: pointer;
+}
+.font-small{
+    font-size: small;
+}
+.font-medium{
+    font-size: medium;
+}
+.font-large{
+    font-size: large;
+}
+.font-xlarge{
+    font-size: x-large;
+}
+.font-xxlarge{
+    font-size: xx-large;
+}
+.underline{
+    text-decoration: underline;
+}
+.hide{
+    display: none;
+}
+.modal{
+    z-index: 9998;
+}
+.p-relative{
+    position: relative;
+}
+.p-absolute{
+    position: absolute;
+}
+.staffAccordion{
+    overflow-y: auto;
+    max-height: 500px;
+}
+.block{
+    display: block !important;
+}
+.form-select .nice-select .list .option{
+    font-size: large;
+}

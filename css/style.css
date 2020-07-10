@@ -2480,7 +2480,7 @@ ul {
 /* line 324, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_menu.scss */
 .menu_fixed {
   position: fixed;
-  z-index: 9999 !important;
+  z-index: 9990 !important;
   width: 100%;
   background-color: #fff;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
@@ -5411,7 +5411,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0px;
   height: 40px;
   background: #f9f9ff;
-  padding-left: 45px;
+  padding-left: 10px;
   padding-right: 40px;
   width: 100%;
 }
@@ -5435,7 +5435,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease 0s;
   line-height: 28px;
   min-height: 28px;
-  font-size: 12px;
+  font-size: 15px;
   padding-left: 45px;
 }
 
