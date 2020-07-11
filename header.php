@@ -56,7 +56,21 @@ include 'db/vars.php';
                                 </li>
                             </ul>
                         </div>
-                        <!-- <a class="btn_2 d-none d-lg-block" href="add_patient.php">Add Patient</a> -->
+                        <?php
+                        if (isset($_COOKIE["admin"]) && !isset($_COOKIE["sId"])) {
+                            echo '<a class="btn-sm btn-link ml-2" href="#!" id="loadUsers" data-toggle="modal" data-target="#myModal">View Staff</a>';
+                        }
+                        if (!isset($_COOKIE["admin"]) && isset($_COOKIE["sId"])) {
+                            echo '<a class="btn-sm btn-link ml-2" href="">Open Queue</a>';
+                        }
+                        if (!isset($_COOKIE["admin"]) && isset($_COOKIE["sId"])) {
+                            echo '<a class="btn-sm btn-link ml-2" href="#!" onclick="displayAlertMsgPhp(\'Logged in as '.$_COOKIE["sFName"].' '.$_COOKIE["sLName"].' ('.$_COOKIE["sTitle"].')\',true)">Hi '.$_COOKIE["sFName"].'</a>';
+                        }
+                        if (isset($_COOKIE["admin"]) || isset($_COOKIE["sId"])) {
+                            echo '<a class="btn-sm btn-link ml-2" href="db/logOut.php">Logout</a>';
+                        }
+                        ?>
+                        
                     </nav>
                 </div>
             </div>
@@ -65,7 +79,7 @@ include 'db/vars.php';
     <!-- Header part end-->
 
     <!-- Toast msg -->
-    <div class="toast m-3 text-center hide" role="alert" aria-live="assertive" aria-atomic="false" style="min-width: 200px; position: absolute; z-index: 9999;" data-delay="10000">
+    <div class="toast m-3 text-center hide bg-white" role="alert" aria-live="assertive" aria-atomic="false" style="min-width: 200px; position: fixed; z-index: 9999;" data-delay="3000">
         <div class="toast-header">
             <span class="mdi mdi-message mdi-18px"></span>
             <strong class="mr-auto ml-2">Alert</strong>

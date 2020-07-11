@@ -7,10 +7,10 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-
+                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
             </div>
         </div>
 
@@ -19,7 +19,6 @@
 
 
 <!-- jquery plugins here-->
-
 <script src="js/jquery-1.12.1.min.js"></script>
 <!-- popper js -->
 <script src="js/popper.min.js"></script>

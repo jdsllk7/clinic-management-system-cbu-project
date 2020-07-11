@@ -18,8 +18,8 @@ if (isset($data)) {
 
         $html .= '<div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title pt-3 pb-0">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Receptionists (' . mysqli_num_rows($receptionist) . ')</a>
+            <h4 class="panel-title pt-2 pb-2 pl-1">
+                <a class="block" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Receptionists (' . mysqli_num_rows($receptionist) . ')</a>
             </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse">
@@ -59,8 +59,8 @@ if (isset($data)) {
     if (mysqli_num_rows($nurse) > 0) {
         $html .= '<div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title pt-3 pb-0">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Nurses (' . mysqli_num_rows($nurse) . ')</a>
+            <h4 class="panel-title pt-2 pb-2 pl-1">
+                <a class="block" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Nurses (' . mysqli_num_rows($nurse) . ')</a>
             </h4>
         </div>
         <div id="collapse2" class="panel-collapse collapse">
@@ -99,8 +99,8 @@ if (isset($data)) {
     if (mysqli_num_rows($lab) > 0) {
         $html .= '<div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title pt-3 pb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Lab Technicians (' . mysqli_num_rows($lab) . ')</a>
+                <h4 class="panel-title pt-2 pb-2 pl-1">
+                    <a class="block" data-toggle="collapse" data-parent="#accordion" href="#collapse3">Lab Technicians (' . mysqli_num_rows($lab) . ')</a>
                 </h4>
             </div>
             <div id="collapse3" class="panel-collapse collapse">
@@ -141,8 +141,8 @@ if (isset($data)) {
     if (mysqli_num_rows($pharmacist) > 0) {
         $html .= '<div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title pt-3 pb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">pharmacists (' . mysqli_num_rows($pharmacist) . ')</a>
+                <h4 class="panel-title pt-2 pb-2 pl-1">
+                    <a class="block" data-toggle="collapse" data-parent="#accordion" href="#collapse4">pharmacists (' . mysqli_num_rows($pharmacist) . ')</a>
                 </h4>
             </div>
             <div id="collapse4" class="panel-collapse collapse">
@@ -183,8 +183,8 @@ if (isset($data)) {
     if (mysqli_num_rows($doctor) > 0) {
         $html .= '<div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title pt-3 pb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Doctors (' . mysqli_num_rows($doctor) . ')</a>
+                <h4 class="panel-title pt-2 pb-2 pl-1">
+                    <a class="block" data-toggle="collapse" data-parent="#accordion" href="#collapse5">Doctors (' . mysqli_num_rows($doctor) . ')</a>
                 </h4>
             </div>
             <div id="collapse5" class="panel-collapse collapse">

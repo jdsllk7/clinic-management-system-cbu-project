@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $staffID = $_POST['staffID'];
         $staffPassword = $_POST['staffPassword'];
 
-        if ($staffID != 00000 && $staffPassword != 'admin') {
+        if ($staffID != 00000 && $staffPassword != '00000') {
 
             $data = mysqli_query($conn, "SELECT * FROM staff WHERE sNo='$staffID' AND password='$staffPassword'");
 
@@ -26,13 +26,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 setcookie('sLName', $user['sLName'], time() + (86400 * 30), "/");
                 setcookie('sTitle', $user['sTitle'], time() + (86400 * 30), "/");
 
-                header('Location: index.php?msg=SUCCESS: Login Successful&type=true');
+                if ($user['sTitle'] == 'Doctor') {
+                    header('Location: patient_list.php?msg=SUCCESS: Login Successful&type=true');
+
+                } elseif ($user['sTitle'] == 'Pharmacist') {
+                    header('Location: patient_list.php?msg=SUCCESS: Login Successful&type=true');
+
+                } elseif ($user['sTitle'] == 'Lab Technician') {
+                    header('Location: patient_list.php?msg=SUCCESS: Login Successful&type=true');
+
+                } elseif ($user['sTitle'] == 'Nurse') {
+                    header('Location: patient_list.php?msg=SUCCESS: Login Successful&type=true');
+
+                } elseif ($user['sTitle'] == 'Receptionist') {
+                    header('Location: add_patient.php?msg=SUCCESS: Login Successful&type=true');
+                }else{
+                    header('Location: logOut.php?msg=ERROR: You have not been assigned a title&type=false');
+                }
+
             } else {
-                header('Location: login.php?msg=ERROR: Incorrect Credentials&type=false');
+                header('Location: index.php?msg=ERROR: Incorrect Credentials&type=false');
             }
-        }else{
-            setcookie('sId', "admin", time() + (86400 * 30), "/");
-            header('Location: admin_create_accounts.php?msg=SUCCESS: Welcome Admin&type=true'); 
+        } else {
+            setcookie('admin', "admin", time() + (86400 * 30), "/");
+            header('Location: admin_create_accounts.php?msg=SUCCESS: Welcome Admin&type=true');
         }
     }
 }

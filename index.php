@@ -1,4 +1,22 @@
 <?php include 'header.php'; ?>
+<?php
+if (isset($_COOKIE["admin"])) {
+    header('Location:admin_create_accounts.php');
+} elseif (isset($_COOKIE["sId"])) {
+    //route to list view
+    if ($_COOKIE["sTitle"] == 'Receptionist') {
+        header('Location:add_patient.php');
+    } elseif ($_COOKIE["sTitle"] == 'Nurse') {
+        header('Location:oooooo.php');
+    } elseif ($_COOKIE["sTitle"] == 'Doctor') {
+        header('Location:oooooo.php');
+    } elseif ($_COOKIE["sTitle"] == 'Lab Technician') {
+        header('Location:oooooo.php');
+    } elseif ($_COOKIE["sTitle"] == 'Pharmacist') {
+        header('Location:oooooo.php');
+    }
+}
+?>
 
 <!-- banner part start-->
 <section class="banner_part">
@@ -7,8 +25,8 @@
             <div class="col-lg-5 col-xl-5">
                 <div class="banner_text">
                     <div class="m-t-300 border-1 p-4">
-                    <?php include 'db/login_db.php'; ?>
-                    <form method="post" id="loginForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="on">
+                        <?php include 'db/login_db.php'; ?>
+                        <form method="post" id="loginForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="on">
                             <h3 class="col-md-12">SIGN IN</h3>
                             <br>
                             <div class="form-group col-md-12">

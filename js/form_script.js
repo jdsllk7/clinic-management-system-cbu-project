@@ -1,64 +1,14 @@
 $(document).ready(function () {
-  /************ lesson form *************/
-  /* $(document).on("click", "a[href$='#finish']", function (e) {
-    e.preventDefault();
-
-    console.log(
-      $("select[name=grade]").val(),
-      $("select[name=subject]").val(),
-      $("input[name=topic]").val(),
-      $("input[name=lessonsName]").val()
-    );
-    if (
-      !$("select[name=grade]").val() ||
-      !$("select[name=subject]").val() ||
-      !$("input[name=topic]").val() ||
-      !$("input[name=lessonsName]").val()
-    ) {
-      return displayAlertMsg(
-        "Fill in the form correctly before you submit",
-        false
-      );
-    } else {
-      //reassign class names
-      $(".fileUpload").each(function (i) {
-        i = i + 1;
-        x = i;
-        console.log(i);
-        $(this).attr("name", "file" + i);
-        $(".fileCount").val(i);
-      });
-      $(".add_text_field").each(function (i) {
-        i = i + 1;
-        $(this).attr("name", "fileText" + i);
-      });
-      //loop through the files
-      let fileCount = $(".fileCount").val();
-      for (let x = 1; x <= fileCount; x++) {
-        let file = $("input[name=file" + x + "]");
-        let fileText = $("textarea[name=fileText" + x + "]");
-
-        console.log("data", file.val(), fileText.val(), x, fileCount);
-        if (!fileText.val() || !file.val()) {
-          return displayAlertMsg(
-            "Attach files and type some notes before you submit",
-            false
-          );
-        }
-      } //end for()
-
-      $("#lessonForm").submit(); // Submit the form in js
-      // alert("submitted");
-    }
-  }); */
-
   /************ login form *************/
   $(document).on("click", "#loginSubmitBtn", function (e) {
     console.log(
       $("input[name=staffID]").val(),
       $("input[name=staffPassword]").val()
     );
-    if (!$("input[name=staffID]").val() || !$("input[name=staffPassword]").val()) {
+    if (
+      !$("input[name=staffID]").val() ||
+      !$("input[name=staffPassword]").val()
+    ) {
       return displayAlertMsg(
         "Fill in the form correctly before you submit",
         false
@@ -94,6 +44,67 @@ $(document).ready(function () {
     }
   });
 
+  /************ add new patient *************/
+  $(document).on("click", ".addToWaitingListBtn", function (e) {
+    e.preventDefault();
+    console.log(
+      $("input[name=pFullName]").val(),
+      $("input[name=pAge]").val(),
+      $("select[name=pSex]").val(),
+      $("select[name=pType]").val(),
+      $("input[name=pReg]").val()
+    );
+    if (
+      !$("input[name=pFullName]").val() ||
+      !$("input[name=pAge]").val() ||
+      !$("select[name=pSex]").val() ||
+      !$("select[name=pType]").val() ||
+      !$("input[name=pReg]").val()
+    ) {
+      return displayAlertMsg(
+        "Fill in the form correctly before you submit",
+        false
+      );
+    } else {
+      let pFullName = $("input[name=pFullName]").val();
+      let pAge = $("input[name=pAge]").val();
+      let pSex = $("select[name=pSex]").val();
+      let pType = $("select[name=pType]").val();
+      let pReg = $("input[name=pReg]").val();
+
+      $.ajax({
+        url: "db/addNewPatient.php",
+        type: "POST",
+        data: {
+          pFullName: pFullName,
+          pAge: pAge,
+          pSex: pSex,
+          pType: pType,
+          pReg: pReg,
+          data: "jdslk",
+        },
+        success: function (result) {
+          if (result === "success") {
+            displayAlertMsg("Patient Added to Waiting List", true);
+            $("#addToListBtnForm"). trigger("reset");
+          } else if (result === "fail") {
+            displayAlertMsg(
+              "Patient with ref no: " + pReg + " already exists",
+              false
+            );
+          } else {
+            displayAlertMsg("Error occurred while saving data", false);
+          }
+        },
+        error: function (error) {
+          displayAlertMsg("Error occurred while saving data", false);
+        },
+      });
+      // return $("#addToListBtnForm").submit();
+    }
+  });
+
+  /**************** displayAlertMsg ****************/
   function displayAlertMsg(msg, type) {
     $(".toast-body").text(msg);
     if (type === true) {

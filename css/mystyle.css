@@ -1,59 +1,79 @@
-.m-t-10{
-    margin-top: 10px;
+.m-t-10 {
+  margin-top: 10px;
 }
-.m-t-100{
-    margin-top: 100px;
+.m-t-100 {
+  margin-top: 100px;
 }
-.m-t-200{
-    margin-top: 200px;
+.m-t-200 {
+  margin-top: 200px;
 }
-.m-t-300{
-    margin-top: 300px;
+.m-t-300 {
+  margin-top: 300px;
 }
-.border-1{
-    border: 1px solid #ced4da;
-    border-radius: 10px;
+.border-1 {
+  border: 1px solid #ced4da;
+  border-radius: 10px;
 }
-.hand{
-    cursor: pointer;
+.hand {
+  cursor: pointer;
 }
-.font-small{
-    font-size: small;
+.float-left {
+  float: left;
 }
-.font-medium{
-    font-size: medium;
+.float-right {
+  float: right;
 }
-.font-large{
-    font-size: large;
+.font-small {
+  font-size: small;
 }
-.font-xlarge{
-    font-size: x-large;
+.font-medium {
+  font-size: medium;
 }
-.font-xxlarge{
-    font-size: xx-large;
+.font-large {
+  font-size: large;
 }
-.underline{
-    text-decoration: underline;
+.font-xlarge {
+  font-size: x-large;
 }
-.hide{
-    display: none;
+.font-xxlarge {
+  font-size: xx-large;
 }
-.modal{
-    z-index: 9998;
+.underline {
+  text-decoration: underline;
 }
-.p-relative{
-    position: relative;
+.hide {
+  display: none;
 }
-.p-absolute{
-    position: absolute;
+.modal {
+  z-index: 9998;
 }
-.staffAccordion{
-    overflow-y: auto;
-    max-height: 500px;
+.p-relative {
+  position: relative;
 }
-.block{
-    display: block !important;
+.p-absolute {
+  position: absolute;
 }
-.form-select .nice-select .list .option{
-    font-size: large;
+.staffAccordion {
+  overflow-y: auto;
+  max-height: 500px;
+}
+.block {
+  display: block !important;
+}
+.form-select .nice-select .list .option {
+  font-size: large;
+}
+.panel-default {
+  border-radius: 5px;
+  /* border: 1px solid #ced4da; */
+  margin: 10px;
+}
+.panel-default:hover {
+  box-shadow: 2px 2px 5px #4d4d4d;
+}
+.searchResults {
+  /* position: absolute; */
+}
+.text-bold {
+  font-weight: bold;
 }

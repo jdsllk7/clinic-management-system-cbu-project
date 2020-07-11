@@ -1,7 +1,20 @@
 <?php include 'header.php'; ?>
 <?php
-if (!isset($_COOKIE["sId"]) || $_COOKIE["sId"] != 'admin') {
-    header('Location:admin_create_accounts.php');
+if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
+    header('Location:index.php');
+} elseif (isset($_COOKIE["sId"])) {
+    //route to list view
+    if ($_COOKIE["sTitle"] == 'Receptionist') {
+        header('Location:add_patient.php');
+    } elseif ($_COOKIE["sTitle"] == 'Nurse') {
+        header('Location:oooooo.php');
+    } elseif ($_COOKIE["sTitle"] == 'Doctor') {
+        header('Location:oooooo.php');
+    } elseif ($_COOKIE["sTitle"] == 'Lab Technician') {
+        header('Location:oooooo.php');
+    } elseif ($_COOKIE["sTitle"] == 'Pharmacist') {
+        header('Location:oooooo.php');
+    }
 }
 ?>
 
@@ -43,16 +56,16 @@ if (!isset($_COOKIE["sId"]) || $_COOKIE["sId"] != 'admin') {
                             <div class="regerv_btn">
                                 <a id="registerSubmitBtn" class="btn_2 d-none d-lg-block text-white hand">Create</a>
                             </div>
-                            <div class="text-center col-md-12 mt-4">
+                            <!-- <div class="text-center col-md-12 mt-4">
                                 <a href="/index.php" class="underline">Sign Out</a>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
                 <div class="banner_img">
-                    <button class="btn border-1 text-info p-absolute" id="loadUsers" data-toggle="modal" data-target="#myModal">View Current Staff</button>
+                    <!-- <button class="btn border-1 text-info p-absolute" id="loadUsers" data-toggle="modal" data-target="#myModal">View Current Staff</button> -->
                     <img src="img/banner_img.png" alt="">
                 </div>
             </div>
