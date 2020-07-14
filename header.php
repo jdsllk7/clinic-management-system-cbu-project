@@ -61,7 +61,7 @@ include 'db/vars.php';
                             echo '<a class="btn-sm btn-link ml-2" href="#!" id="loadUsers" data-toggle="modal" data-target="#myModal">View Staff</a>';
                         }
                         if (!isset($_COOKIE["admin"]) && isset($_COOKIE["sId"])) {
-                            echo '<a class="btn-sm btn-link ml-2" href="">Open Queue</a>';
+                            echo '<a class="btn-sm btn-link ml-2" href="patient_list.php">Open Queue</a>';
                         }
                         if (!isset($_COOKIE["admin"]) && isset($_COOKIE["sId"])) {
                             echo '<a class="btn-sm btn-link ml-2" href="#!" onclick="displayAlertMsgPhp(\'Logged in as '.$_COOKIE["sFName"].' '.$_COOKIE["sLName"].' ('.$_COOKIE["sTitle"].')\',true)">Hi '.$_COOKIE["sFName"].'</a>';

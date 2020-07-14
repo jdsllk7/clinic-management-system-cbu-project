@@ -32,6 +32,9 @@ function loadUsers(body, header) {
 
   $(".modal-title").text(header);
   $(".modal-body").html(body);
+  $(".modal-footer").html(
+    '<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>'
+  );
 } //end loadUsers()
 
 //-----------------------------------------------Delete users
@@ -112,29 +115,9 @@ $("#loadSearchPatients").click(function () {
 
 //-----------------------------------------------Add Patient to list
 $(document).on("click", ".addTOListP", function () {
-  let html =
-    '<div class="form-select col-md-12 mb-4">' +
-    '<select class="bg-transparent border rounded form-control" name="admitType" style="line-height: 30px;" required>' +
-    '<option value="" selected>- Select Admission Type -</option>' +
-    '<option value="Normal">Normal</option>' +
-    '<option value="Emergency">Emergency</option>' +
-    "</select>" +
-    "</div>";
+  let refNo = $(this).val();
 
-   html +=
-    '<div class="form-select col-md-12 mb-4">' +
-    '<select class="bg-transparent border rounded form-control" name="admitType" style="line-height: 30px;" required>' +
-    '<option value="" selected>- Select Admission Type -</option>' +
-    '<option value="Normal">Normal</option>' +
-    '<option value="Emergency">Emergency</option>' +
-    "</select>" +
-    "</div>";
-
-  loadUsers(html, "Patient Options");
-  $("#myModal").modal();
-
-  if (false) {
-    let refNo = $(this).val();
+  if (true) {
     $.ajax({
       url: "db/addRemoveDelete.php",
       type: "POST",
