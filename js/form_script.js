@@ -22,6 +22,8 @@ $(document).ready(function () {
   $(document).on("click", "#registerSubmitBtn", function (e) {
     e.preventDefault();
     console.log(
+      $("input[name=sAge]").val(),
+      $("select[name=sSex]").val(),
       $("input[name=sFName]").val(),
       $("input[name=sLName]").val(),
       $("input[name=sNo]").val(),
@@ -29,6 +31,8 @@ $(document).ready(function () {
       $("input[name=password]").val()
     );
     if (
+      !$("input[name=sAge]").val() ||
+      !$("select[name=sSex]").val() ||
       !$("input[name=sFName]").val() ||
       !$("input[name=sLName]").val() ||
       !$("input[name=sNo]").val() ||
@@ -52,6 +56,7 @@ $(document).ready(function () {
       $("input[name=pAge]").val(),
       $("select[name=pSex]").val(),
       $("select[name=pType]").val(),
+      $("select[name=rDestination]").val(),
       $("input[name=pReg]").val()
     );
     if (
@@ -59,6 +64,7 @@ $(document).ready(function () {
       !$("input[name=pAge]").val() ||
       !$("select[name=pSex]").val() ||
       !$("select[name=pType]").val() ||
+      !$("select[name=rDestination]").val() ||
       !$("input[name=pReg]").val()
     ) {
       return displayAlertMsg(
@@ -70,6 +76,7 @@ $(document).ready(function () {
       let pAge = $("input[name=pAge]").val();
       let pSex = $("select[name=pSex]").val();
       let pType = $("select[name=pType]").val();
+      let rDestination = $("select[name=rDestination]").val();
       let pReg = $("input[name=pReg]").val();
 
       $.ajax({
@@ -80,6 +87,7 @@ $(document).ready(function () {
           pAge: pAge,
           pSex: pSex,
           pType: pType,
+          rDestination: rDestination,
           pReg: pReg,
           data: "jdslk",
         },
@@ -93,7 +101,7 @@ $(document).ready(function () {
               false
             );
           } else {
-            displayAlertMsg("Error occurred while saving data", false);
+            displayAlertMsg("Error occurred while saving data.", false);
           }
         },
         error: function (error) {

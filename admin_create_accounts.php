@@ -19,7 +19,7 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
 ?>
 
 <!-- banner part start-->
-<section class="banner_part" onclick="window.history.pushState('', '', '/jdslk_projects/clinic-management-system-cbu-project/admin_create_accounts.php');">
+<section class="banner_part">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 col-xl-5">
@@ -32,16 +32,26 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                             </h3>
                             <br>
                             <div class="form-group col-md-12">
-                                <input type="text" class="form-control" name="sFName" placeholder="First Name" autofocus required autocomplete="off">
+                                <input type="text" class="form-control" name="sFName" placeholder="First Name" title="First Name" autofocus required autocomplete="off">
                             </div>
                             <div class="form-group col-md-12 mt-3">
-                                <input type="text" class="form-control" name="sLName" placeholder="Last Name" autofocus required autocomplete="off">
+                                <input type="text" class="form-control" name="sLName" placeholder="Last Name" title="Last Name" autofocus required autocomplete="off">
                             </div>
                             <div class="form-group col-md-12 mt-3">
-                                <input type="number" class="form-control autoSNo" name="sNo" placeholder="Staff No. (Auto Generated)" autofocus required autocomplete="off">
+                                <input type="number" class="form-control" name="sAge" placeholder="Age" title="Age" autofocus required autocomplete="off">
                             </div>
                             <div class="form-select col-md-12 mb-4">
-                                <select class="bg-transparent border rounded font-medium" name="sTitle" required>
+                                <select class="bg-transparent border rounded form-control" name="sSex" name="Sex" required>
+                                    <option value="" selected>- Select Sex -</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12 mt-3">
+                                <input type="number" class="form-control autoSNo" name="sNo" placeholder="Staff No." title="Staff No." autofocus required autocomplete="off">
+                            </div>
+                            <div class="form-select col-md-12 mb-4">
+                                <select class="bg-transparent border rounded form-control" name="sTitle" title="Title" style="line-height: 30px;" required>
                                     <option value="" selected>- Select Title -</option>
                                     <option value="Doctor">Doctor</option>
                                     <option value="Pharmacist">Pharmacist</option>
@@ -51,10 +61,10 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                                 </select>
                             </div>
                             <div class="form-group col-md-12 mt-4">
-                                <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="off">
+                                <input type="password" class="form-control" name="password" placeholder="Password" title="Password" required autocomplete="off">
                             </div>
                             <div class="regerv_btn">
-                                <a id="registerSubmitBtn" class="btn_2 d-none d-lg-block text-white hand">Create</a>
+                                <a id="registerSubmitBtn" class="btn_2 d-none d-lg-block text-white hand">Create Account</a>
                             </div>
                             <!-- <div class="text-center col-md-12 mt-4">
                                 <a href="/index.php" class="underline">Sign Out</a>

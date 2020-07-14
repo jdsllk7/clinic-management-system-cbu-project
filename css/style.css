@@ -3508,7 +3508,7 @@ ul {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #4d4d4d;
+  background-color: #282828;
   opacity: 0.8;
   z-index: -1;
 }
@@ -5454,8 +5454,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 1078, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_elements.scss */
 .form-select .current {
-  margin-right: 50px;
-  font-weight: 300;
+  /* margin-right: 50px; */
+  /* font-weight: 300; */
 }
 
 /* line 1082, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_elements.scss */

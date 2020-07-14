@@ -25,11 +25,14 @@ if (mysqli_query($conn, $sql)) {
 
 $sql = "CREATE TABLE IF NOT EXISTS staff (
 	sId BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	sNo VARCHAR(200) NOT NULL,
+	sNo INT(10) NOT NULL,
 	sFName VARCHAR(50) NOT NULL,
 	sLName VARCHAR(50) NOT NULL,
 	sTitle VARCHAR(50) NOT NULL,
-	password VARCHAR(200) NOT NULL
+	password VARCHAR(200) NOT NULL,
+	sAge INT(10) NOT NULL,
+	sSex VARCHAR(10) NOT NULL,
+	sStatus VARCHAR(10) DEFAULT '0'
 	)";
 // $sql = "DROP TABLE IF EXISTS staff";
 mysqli_query($conn, $sql);
@@ -40,13 +43,16 @@ $sql = "CREATE TABLE IF NOT EXISTS patients (
 	pAge INT(10) NOT NULL,
 	pSex VARCHAR(10) NOT NULL,
 	pReg INT(10) NOT NULL,
-	pType VARCHAR(50) NOT NULL
+	pStatus VARCHAR(10) DEFAULT '1'
 	)";
 // $sql = "DROP TABLE IF EXISTS patients";
 mysqli_query($conn, $sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS pRecords (
 	rId BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	rFullName VARCHAR(200),
+	rAge INT(10),
+	rSex VARCHAR(10),
 	rTemp VARCHAR(50),
 	rBP VARCHAR(50),
 	rWeight VARCHAR(50),
@@ -54,10 +60,11 @@ $sql = "CREATE TABLE IF NOT EXISTS pRecords (
 	rPrescription VARCHAR(255),
 	rLabResults VARCHAR(255),
 	rDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	rStatus boolean NOT NULL DEFAULT 1,
-	rType VARCHAR(50) NOT NULL,
-	rDestination VARCHAR(50) NOT NULL,
-	pId BIGINT(20) NOT NULL
+	rStatus VARCHAR(10) DEFAULT '1',
+	rType VARCHAR(50),
+	rDestination VARCHAR(50),
+	pType VARCHAR(50),
+	pId INT(10) NOT NULL
 	)";
 // $sql = "DROP TABLE IF EXISTS pRecords";
 mysqli_query($conn, $sql);

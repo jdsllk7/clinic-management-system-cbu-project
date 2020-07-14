@@ -10,17 +10,20 @@ if (isset($data)) {
         isset($_POST["pAge"]) &&
         isset($_POST["pSex"]) &&
         isset($_POST["pType"]) &&
+        isset($_POST["rDestination"]) &&
         isset($_POST["pReg"]) &&
         !empty($_POST["pFullName"]) &&
         !empty($_POST["pAge"]) &&
         !empty($_POST["pSex"]) &&
         !empty($_POST["pType"]) &&
+        !empty($_POST["rDestination"]) &&
         !empty($_POST["pReg"])
     ) {
         $pFullName = $_POST["pFullName"];
         $pAge = $_POST["pAge"];
         $pSex = $_POST["pSex"];
-        $pType = $_POST["pType"];
+        $rType = $_POST["pType"];
+        $rDestination = $_POST["rDestination"];
         $pReg = $_POST["pReg"];
 
         //insert------------------
@@ -28,22 +31,57 @@ if (isset($data)) {
         pFullName,
         pAge,
         pSex,
-        pReg,
-        pType
+        pReg
         ) VALUES (
           '$pFullName',
           '$pAge',
           '$pSex',
-          '$pReg',
-          '$pType'
+           $pReg
           )";
 
         $data = mysqli_query($conn, "SELECT * FROM patients WHERE pReg=$pReg");
 
-        if (mysqli_num_rows($data) == 0) {
+        $data1 = mysqli_query($conn, "SELECT * FROM staff WHERE sNo=$pReg");
 
-            mysqli_query($conn, $sql);
-            echo 'success';
+        if (mysqli_num_rows($data) == 0 && mysqli_num_rows($data1) == 0) {
+
+            if (mysqli_query($conn, $sql)) {
+
+                $sql1 = "INSERT INTO pRecords (
+                rFullName,
+                rAge,
+                rSex,
+                rTemp,
+                rBP,
+                rWeight,
+                rDiagnosis,
+                rPrescription,
+                rLabResults,
+                rType,
+                rDestination,
+                pType,
+                pId
+                ) VALUES (
+                    '$pFullName',
+                     $pAge,
+                    '$pSex',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '$rType',
+                    '$rDestination',
+                    'Patient',
+                     $pReg
+                )";
+
+                if (mysqli_query($conn, $sql1)) {
+
+                    echo 'success';
+                }
+            }
         } else {
             echo 'fail';
         }

@@ -3,10 +3,14 @@ include '../db/connect.php';
 $data = $_POST['data'];
 
 if (isset($data)) {
+    // $staff = mysqli_query($conn, "SELECT staff.* FROM staff INNER JOIN pRecords ON staff.sNo=pRecords.pId;");
+    // $patients = mysqli_query($conn, "SELECT patients.* FROM patients INNER JOIN pRecords ON patients.pReg=pRecords.pId;");
+
     $staff = mysqli_query($conn, "SELECT * FROM staff ORDER BY sId DESC");
     $patients = mysqli_query($conn, "SELECT * FROM patients ORDER BY pId DESC");
 
     $html = '';
+    $status = '';
 
     if (mysqli_num_rows($staff) > 0 || mysqli_num_rows($patients) > 0) {
 
@@ -20,37 +24,48 @@ if (isset($data)) {
                     <th>Full Name</th>
                     <th>Ref No.</th>
                     <th>Type</th>
-                    <th class="text-center" style="width: 100px;">Add To Queue</th>
+                    <th class="text-center" style="width: 100px;">Add/Remove From Queue</th>
                     <th class="text-center" style="width: 100px;">Delete</th>
                 </tr>
             </thead>
             <tbody id="searchTable">';
 
         while ($result = mysqli_fetch_assoc($patients)) {
+
+            $status = '<button value="' . $result["pReg"] . '" class="m-0 bg-transparent border-0 text-primary underline addTOListP" title="Add patient to queue">Add</button>';
+            if ($result["pStatus"] == 1) {
+                $status = '<button value="' . $result["pReg"] . '" class="m-0 bg-transparent border-0 text-dark underline removeFromListP" title="Remove patient from queue">Remove</button>';
+            }
             $html .= '
-            <tr>
+            <tr class="deleteListRow' . $result["pReg"] . '">
                 <td>' . $result["pFullName"] . '</td>
                 <td>' . $result["pReg"] . '</td>
-                <td>' . $result["pType"] . '</td>
-                <td class="text-center">
-                    <button value="' . $result["pId"] . '" class="m-0 addToList bg-transparent border-0 text-primary underline">Add</button>
+                <td>Patient</td>
+                <td class="text-center addRemovePcell' . $result["pReg"] . '">
+                    ' . $status . '
                 </td>
                 <td class="text-center">
-                    <button value="' . $result["pId"] . '" class="m-0 addToList bg-transparent border-0 text-danger underline">Delete</button>
+                    <button value="' . $result["pReg"] . '" class="m-0 bg-transparent border-0 text-danger underline deletePatient">Delete</button>
                 </td>
             </tr>';
         }
         while ($result = mysqli_fetch_assoc($staff)) {
+
+            $status = '<button value="' . $result["sNo"] . '" class="m-0 bg-transparent border-0 text-primary underline addTOListS" title="Add staff member to queue">Add</button>';
+            if ($result["sStatus"] == 1) {
+                $status = '<button value="' . $result["sNo"] . '" class="m-0 bg-transparent border-0 text-dark underline removeFromListS" title="Remove staff member from queue">Remove</button>';
+            }
+
             $html .= '
             <tr>
                 <td>' . $result["sFName"] . ' ' . $result["sLName"] . '</td>
                 <td>' . $result["sNo"] . '</td>
-                <td>Staff</td>
-                <td class="text-center">
-                    <button value="' . $result["sId"] . '" class="m-0 addToList bg-transparent border-0 text-primary underline" title="Add To Waiting List">Add</button>
+                <td>Staff Member</td>
+                <td class="text-center addRemoveScell' . $result["sNo"] . '">
+                    ' . $status . '
                 </td>
                 <td class="text-center">
-                    <button value="' . $result["sId"] . '" class="m-0 addToList bg-transparent border-0 text-danger underline" title="Delete Patient">Delete</button>
+                    <button value="' . $result["sNo"] . '" class="m-0 bg-transparent border-0 text-danger underline deleteStaff" title="Delete Patient"></button>
                 </td>
             </tr>';
         }

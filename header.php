@@ -52,7 +52,7 @@ include 'db/vars.php';
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item active">
                                     <h3 class="nav-link" href="index.php" style="font-size:xx-large; color: #0065e1;">
-                                        CBU CLINIC</h3>
+                                        CLINIC</h3>
                                 </li>
                             </ul>
                         </div>
@@ -79,7 +79,7 @@ include 'db/vars.php';
     <!-- Header part end-->
 
     <!-- Toast msg -->
-    <div class="toast m-3 text-center hide bg-white" role="alert" aria-live="assertive" aria-atomic="false" style="min-width: 200px; position: fixed; z-index: 9999;" data-delay="3000">
+    <div class="toast m-3 text-center hide bg-white" role="alert" aria-live="assertive" aria-atomic="false" style="min-width: 200px; position: fixed; z-index: 9999;" data-delay="10000">
         <div class="toast-header">
             <span class="mdi mdi-message mdi-18px"></span>
             <strong class="mr-auto ml-2">Alert</strong>

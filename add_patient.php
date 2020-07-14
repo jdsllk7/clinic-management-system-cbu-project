@@ -31,24 +31,21 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                 <br>
                 <div class="regervation_part_iner">
                     <!-- <?php include 'db/addNewPatient.php'; ?> -->
-                    <form method="post" id="addToListBtnForm"
-                        action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="off">
+                    <form method="post" id="addToListBtnForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="off">
                         <div class="form-row">
                             <h3 class="col-md-12 text-white mb-3">Add New Patient</h3>
                             <div class="form-group col-md-6">
                                 <label class="text-white text-bold">Full Name</label>
-                                <input type="text" class="form-control" name="pFullName" placeholder="Full Name"
-                                    autocomplete="off">
+                                <input type="text" class="form-control" name="pFullName" placeholder="" autocomplete="off">
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="text-white text-bold">Age</label>
-                                <input type="text" class="form-control" name="pAge" placeholder="Age"
-                                    autocomplete="off">
+                                <input type="text" class="form-control" name="pAge" placeholder="" autocomplete="off">
                             </div>
                             <div class="form-group col-md-12">
-                                <label class="text-white text-bold">Sex</label>
+                                <label class="text-white text-bold">Select Sex</label>
                                 <select class="form-control" name="pSex">
-                                    <option value="" selected>- Select Sex -</option>
+                                    <option value="" selected></option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -56,15 +53,23 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                             <div class="form-group col-md-12">
                                 <label class="text-white text-bold">Select Type</label>
                                 <select class="form-control selectType" name="pType">
-                                    <option value="" selected>- Select Type -</option>
+                                    <option value="" selected></option>
                                     <option value="Normal">Normal</option>
                                     <option value="Emergency">Emergency</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
+                                <label class="text-white text-bold">Next Destination</label>
+                                <select class="form-control selectType" name="rDestination">
+                                    <option value="Nurse" selected>Nurse</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Lab Technician">Lab Technician</option>
+                                    <option value="Pharmacist">Pharmacist</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
                                 <label class="text-white text-bold">Reference No.</label>
-                                <input type="number" name="pReg" class="form-control"
-                                    placeholder="Reference No. (Auto Generated)" autocomplete="off">
+                                <input type="number" name="pReg" class="form-control" placeholder="" autocomplete="off">
                             </div>
                         </div>
                         <div class="regerv_btn">
