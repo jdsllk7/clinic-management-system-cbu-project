@@ -1,157 +1,80 @@
-<!doctype html>
-<html lang="en">
+<?php include 'header.php'; ?>
+<?php
+if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
+    header('Location:db/logOut.php');
+} elseif (isset($_COOKIE["sId"])) {
+    //route to list view
+    if ($_COOKIE["sTitle"] == 'Receptionist') {
+        header('Location: add_patient.php');
+    } elseif ($_COOKIE["sTitle"] == 'Doctor') {
+        header('Location: doctor.php');
+    } elseif ($_COOKIE["sTitle"] == 'Lab Technician') {
+        header('Location: lab.php');
+    } elseif ($_COOKIE["sTitle"] == 'Pharmacist') {
+        header('Location: pharmacy.php');
+    }
+}
+?>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>medical</title>
-    <link rel="icon" href="img/favicon.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- themify CSS -->
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css">
-    <!-- magnific popup CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <!-- nice select CSS -->
-    <link rel="stylesheet" href="css/nice-select.css">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <!--::header part start::-->
-    <header class="main_menu home_menu">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img src="img/favicon.png" alt="logo"> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse main-menu-item justify-content-center"
-                            id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="add_patient.html">Add Patient</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="stuff_list.html">Stuff List</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="emergency_list.html">Emergency List</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="patient_list.html">Patient List</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="doctor.html">Doctor</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="nurse.html">Nurse</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="lab.html">Lab</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" href="pharmacy.html">Pharmacy</a>
-                                </li>
-                            </ul>
+<!--::regervation_part start::-->
+<section class="regervation_part section_padding">
+    <div class="container">
+        <h1 class="text-white text-center">Nurse's Office</h1>
+        <div class="row align-items-center regervation_content">
+            <div class="col-lg-12">
+                <div class="regervation_part_iner">
+                <?php include 'db/nextOffice_db.php'; ?>
+                <form method="post" id="nextOfficeForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="on">
+                        <br>
+                        <div class="form-row">
+                            <h3 class="col-md-12 text-white">Patient Details</h3>
+                            <br>
+                            <br>
+                            <div class="form-group col-md-4">
+                                <label class="text-white text-bold">Full Name</label>
+                                <input type="text" value="<?php if (isset($_COOKIE["rFullName"])){echo $_COOKIE["rFullName"];} ?>" disabled class="form-control disabled">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="text-white text-bold">Age (years)</label>
+                                <input type="text" value="<?php if (isset($_COOKIE["rAge"])){echo $_COOKIE["rAge"];} ?>" disabled class="form-control disabled">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="text-white text-bold">Sex</label>
+                                <input type="text" value="<?php if (isset($_COOKIE["rSex"])){echo $_COOKIE["rSex"];} ?>" disabled class="form-control disabled">
+                                <br>
+                            </div>
+                            <h3 class="col-md-12 text-white">Patient Vitals</h3>
+                            <br>
+                            <br>
+                            <div class="form-group col-md-12">
+                                <label class="text-white text-bold">Temperature (&#8451;)</label>
+                                <input type="text" value="" class="form-control" name="rTemp">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="text-white text-bold">BP (Hmg)</label>
+                                <input type="text" value="" class="form-control" name="rBP">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="text-white text-bold">Weight (Kg)</label>
+                                <input type="text" value="" class="form-control" name="rWeight">
+                            </div>
                         </div>
-                        <!-- <a class="btn_2 d-none d-lg-block" href="patient_list.html">Queue</a> -->
-                    </nav>
+                        <input type="hidden" name="nextOffice" value="toDoctor">
+                        <input type="hidden" name="rId" value="<?php if (isset($_COOKIE["rId"])){echo $_COOKIE["rId"];} ?>">
+                        <div class="regerv_btn">
+                            <a href="#!" class="btn_2 d-none d-lg-block" id="sendToNextOffice">Send to Doctor</a>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </form>
                 </div>
             </div>
         </div>
-    </header>
-    <!-- Header part end-->
+    </div>
+</section>
 
-    <!--::regervation_part start::-->
-    <section class="regervation_part section_padding">
-        <div class="container">
-            <h1 class="text-white text-center">Nurse's View</h1>
-            <div class="row align-items-center regervation_content">
-                <div class="col-lg-12">
-                    <div class="regervation_part_iner">
-                        <form>
-                            <br>
-                            <div class="form-row">
-                                <h3 class="col-md-12 text-white">Patient Details</h3>
-                                <div class="form-group col-md-4">
-                                    <input type="text" disabled value="Bwalya Lungu" class="form-control" id="inputEmail4" placeholder="Name">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" value="34" disabled class="form-control" id="inputPassword4"
-                                        placeholder="Age">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" value="Male" disabled class="form-control" id="inputPassword4"
-                                        placeholder="Sex">
-                                        <br>
-                                </div>
-                                <h3 class="col-md-12 text-white">Patient Vitals</h3>
-                                <div class="form-group col-md-12">
-                                    <input type="text" value="" class="form-control" id="inputPassword4"
-                                        placeholder="Enter Temperature...">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <input type="text" value="" class="form-control" id="inputPassword4"
-                                        placeholder="Enter DP reading...">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <input type="text" value="" class="form-control" id="inputPassword4"
-                                        placeholder="Enter Weight...">
-                                </div>
-                            </div>
-                            <div class="regerv_btn">
-                                <a href="doctor.html" class="btn_2 d-none d-lg-block">Send to Doctor</a>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--::regervation_part end::-->
-    <!-- jquery plugins here-->
-
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- owl carousel js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- contact js -->
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <script src="js/contact.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-</body>
-
-</html>
+<?php include 'footer.php'; ?>

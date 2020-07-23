@@ -1,17 +1,17 @@
 <?php include 'header.php'; ?>
 <?php
 if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
-    header('Location:index.php');
+    header('Location:db/logOut.php');
 } elseif (isset($_COOKIE["sId"])) {
     //route to list view
     if ($_COOKIE["sTitle"] == 'Nurse') {
-        header('Location:oooooo.php');
-    } elseif ($_COOKIE["sTitle"] == 'Doctor') {
-        header('Location:oooooo.php');
+        header('Location: nurse.php');
+    } elseif ($_COOKIE["sTitle"] == 'Doctor') { 
+        header('Location: doctor.php');
     } elseif ($_COOKIE["sTitle"] == 'Lab Technician') {
-        header('Location:oooooo.php');
+        header('Location: lab.php');
     } elseif ($_COOKIE["sTitle"] == 'Pharmacist') {
-        header('Location:oooooo.php');
+        header('Location: pharmacy.php');
     }
 }
 ?>
@@ -45,7 +45,7 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                             <div class="form-group col-md-12">
                                 <label class="text-white text-bold">Select Sex</label>
                                 <select class="form-control" name="pSex">
-                                    <option value="" selected></option>
+                                    <option value="" selected>- Select -</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -53,7 +53,7 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                             <div class="form-group col-md-12">
                                 <label class="text-white text-bold">Select Type</label>
                                 <select class="form-control selectType" name="pType">
-                                    <option value="" selected></option>
+                                    <option value="" selected>- Select -</option>
                                     <option value="Normal">Normal</option>
                                     <option value="Emergency">Emergency</option>
                                 </select>
@@ -61,7 +61,8 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                             <div class="form-group col-md-12">
                                 <label class="text-white text-bold">Next Destination</label>
                                 <select class="form-control selectType" name="rDestination">
-                                    <option value="Nurse" selected>Nurse</option>
+                                    <option value="" selected>- Select -</option>
+                                    <option value="Nurse">Nurse</option>
                                     <option value="Doctor">Doctor</option>
                                     <option value="Lab Technician">Lab Technician</option>
                                     <option value="Pharmacist">Pharmacist</option>

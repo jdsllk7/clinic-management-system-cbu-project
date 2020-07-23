@@ -7,10 +7,29 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="myModalSub" class="modal sub-model fade" role="dialog">
+    <div class="modal-dialog modal-sm" style="box-shadow: 4px 4px 8px #4d4d4d;">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title-sub">Modal Header</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body-sub">
+
+            </div>
+            <div class="modal-footer-sub">
+                
             </div>
         </div>
 

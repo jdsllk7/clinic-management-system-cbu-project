@@ -94,7 +94,7 @@ $(document).ready(function () {
         success: function (result) {
           if (result === "success") {
             displayAlertMsg("Patient Added to Waiting List", true);
-            $("#addToListBtnForm"). trigger("reset");
+            $("#addToListBtnForm").trigger("reset");
           } else if (result === "fail") {
             displayAlertMsg(
               "Patient with ref no: " + pReg + " already exists",
@@ -122,4 +122,103 @@ $(document).ready(function () {
     }
     $(".toast").toast("show");
   } //end alertMsg()
+});
+
+/************ Send to Next Office *************/
+$(document).on("click", "#sendToNextOffice", function (e) {
+  e.preventDefault();
+
+  if ($("input[name=nextOffice]").val() === "toDoctor") {
+    console.log(
+      $("input[name=rTemp]").val(),
+      $("input[name=rBP]").val(),
+      $("input[name=rId]").val(),
+      $("input[name=rWeight]").val(),
+      $("input[name=nextOffice]").val()
+    );
+
+    if (
+      !$("input[name=rTemp]").val() ||
+      !$("input[name=rBP]").val() ||
+      !$("input[name=rId]").val() ||
+      !$("input[name=rWeight]").val() ||
+      !$("input[name=nextOffice]").val()
+    ) {
+      return displayAlertMsg(
+        "Fill in the form correctly before you submit",
+        false
+      );
+    } else {
+      return $("#nextOfficeForm").submit();
+    }
+  } else if ($("input[name=nextOffice]").val() === "toPharmacist") {
+    console.log(
+      $("textarea[name=rDiagnosis]").val(),
+      $("textarea[name=rPrescription]").val(),
+      $("input[name=rId]").val(),
+      $("input[name=nextOffice]").val()
+    );
+
+    if (
+      !$("textarea[name=rDiagnosis]").val() ||
+      !$("textarea[name=rPrescription]").val() ||
+      !$("input[name=rId]").val() ||
+      !$("input[name=nextOffice]").val()
+    ) {
+      return displayAlertMsg(
+        "Fill in the form correctly before you submit",
+        false
+      );
+    } else {
+      return $("#nextOfficeForm").submit();
+    }
+  } else if ($("input[name=nextOffice]").val() === "toFinish") {
+    console.log($("input[name=rId]").val(), $("input[name=nextOffice]").val());
+
+    if (!$("input[name=rId]").val() || !$("input[name=nextOffice]").val()) {
+      return displayAlertMsg(
+        "Fill in the form correctly before you submit",
+        false
+      );
+    } else {
+      return $("#nextOfficeForm").submit();
+    }
+  } else if ($("input[name=nextOffice]").val() === "backToDoctor") {
+    console.log(
+      $("textarea[name=rLabResults]").val(),
+      $("input[name=rId]").val(),
+      $("input[name=nextOffice]").val()
+    );
+
+    if (
+      !$("textarea[name=rLabResults]").val() ||
+      !$("input[name=rId]").val() ||
+      !$("input[name=nextOffice]").val()
+    ) {
+      return displayAlertMsg(
+        "Fill in the form correctly before you submit",
+        false
+      );
+    } else {
+      return $("#nextOfficeForm").submit();
+    }
+  }
+});
+
+$(document).on("click", "#sendToLab", function (e) {
+  $("input[name=nextOffice]").val("toLab");
+
+  console.log($("input[name=rId]").val(), $("input[name=nextOffice]").val());
+
+  if (
+    !$("input[name=rId]").val() &&
+    $("input[name=nextOffice]").val() === "toLab"
+  ) {
+    return displayAlertMsg(
+      "Fill in the form correctly before you submit",
+      false
+    );
+  } else {
+    return $("#nextOfficeForm").submit();
+  }
 });

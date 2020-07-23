@@ -47,6 +47,9 @@
 .modal {
   z-index: 9998;
 }
+.modal .sub-model {
+  z-index: 9999;
+}
 .p-relative {
   position: relative;
 }
@@ -71,9 +74,9 @@
 .panel-default:hover {
   box-shadow: 2px 2px 5px #4d4d4d;
 }
-.searchResults {
-  /* position: absolute; */
-}
 .text-bold {
   font-weight: bold;
+}
+.disabled{
+  background-color: #666666 !important;
 }

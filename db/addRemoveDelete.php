@@ -98,7 +98,6 @@ if (isset($refNo)) {
 
 function addToRecordsTable($conn, $fullName, $age, $sex, $rType, $destination, $pType, $id)
 {
-    // include '../db/connect.php';
     $sql1 = "INSERT INTO pRecords (
         rFullName,
         rAge,

@@ -41,36 +41,36 @@ include 'db/vars.php';
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.php"> <img src="img/favicon.png" alt="logo"> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
-                        <div class="collapse navbar-collapse main-menu-item justify-content-center"
-                            id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse main-menu-item justify-content-center" id="navbarSupportedContent">
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item active">
                                     <h3 class="nav-link" href="index.php" style="font-size:xx-large; color: #0065e1;">
-                                        CLINIC</h3>
+                                        CBU CLINIC
+                                    </h3>
                                 </li>
                             </ul>
                         </div>
                         <?php
                         if (isset($_COOKIE["admin"]) && !isset($_COOKIE["sId"])) {
-                            echo '<a class="btn-sm btn-link ml-2" href="#!" id="loadUsers" data-toggle="modal" data-target="#myModal">View Staff</a>';
+                            echo '<a class="btn-sm btn-link ml-2" href="#!" id="loadUsers" data-toggle="modal" data-target="#myModal">VIEW STAFF</a>';
+                        }
+                        if (isset($_COOKIE["audio"])) {
+                            echo '<button class="btn-sm btn-link ml-2 hand bg-transparent border-0 audioBtn" value="' . $_COOKIE["audio"] . '">&#x1F50A</button>';
                         }
                         if (!isset($_COOKIE["admin"]) && isset($_COOKIE["sId"])) {
-                            echo '<a class="btn-sm btn-link ml-2" href="patient_list.php">Open Queue</a>';
-                        }
-                        if (!isset($_COOKIE["admin"]) && isset($_COOKIE["sId"])) {
-                            echo '<a class="btn-sm btn-link ml-2" href="#!" onclick="displayAlertMsgPhp(\'Logged in as '.$_COOKIE["sFName"].' '.$_COOKIE["sLName"].' ('.$_COOKIE["sTitle"].')\',true)">Hi '.$_COOKIE["sFName"].'</a>';
+                            echo '<a class="btn-sm btn-link ml-2" href="index.php">OFFICE</a>';
+                            echo '<a class="btn-sm btn-link ml-2" href="patient_list.php">QUEUE</a>';
+                            echo '<a class="btn-sm btn-link ml-2" href="#!" onclick="displayAlertMsgPhp(\'Logged in as ' . $_COOKIE["sFName"] . ' ' . $_COOKIE["sLName"] . ' (' . $_COOKIE["sTitle"] . ') \t Staff_ID: ' . $_COOKIE["sNo"] . '\',true)">Hi ' . $_COOKIE["sFName"] . '</a>';
                         }
                         if (isset($_COOKIE["admin"]) || isset($_COOKIE["sId"])) {
-                            echo '<a class="btn-sm btn-link ml-2" href="db/logOut.php">Logout</a>';
+                            echo '<a class="btn-sm btn-link ml-2" href="db/logOut.php">LOGOUT</a>';
                         }
                         ?>
-                        
+
                     </nav>
                 </div>
             </div>

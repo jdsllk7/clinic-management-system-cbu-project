@@ -1,6 +1,6 @@
 //-----------------------------------------------Toast Msg
 function displayAlertMsg(msg, type) {
-  $(".toast-body").text(msg);
+  $(".toast-body").html(msg);
   if (type === true) {
     $(".toast-body").css("color", "green");
   } else {
@@ -36,6 +36,43 @@ function loadUsers(body, header) {
     '<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>'
   );
 } //end loadUsers()
+
+function loadUsersSubModel(refNo, type) {
+  $(".modal-title-sub").html("");
+  $(".modal-title-sub").text("");
+  $(".modal-body-sub").html("");
+  $(".modal-body-sub").text("");
+
+  let body =
+    '<div class="form-group col-md-12">' +
+    '<label class="text-dark text-bold">Select Type</label>' +
+    '<select class="form-control selectTypeSub">' +
+    '<option value="" selected>- Select -</option>' +
+    '<option value="Normal">Normal</option>' +
+    '<option value="Emergency">Emergency</option>' +
+    "</select>" +
+    "</div><br>" +
+    '<div class="form-group col-md-12">' +
+    '<label class="text-dark text-bold">Next Destination</label>' +
+    '<select class="form-control selectDestinationSub">' +
+    '<option value="" selected>- Select -</option>' +
+    '<option value="Nurse">Nurse</option>' +
+    '<option value="Doctor">Doctor</option>' +
+    '<option value="Lab Technician">Lab Technician</option>' +
+    '<option value="Pharmacist">Pharmacist</option>' +
+    "</select>" +
+    "</div>";
+
+  $(".modal-title-sub").text("Select Options");
+  $(".modal-body-sub").html(body);
+  $(".modal-footer-sub").html(
+    '<button type="button" onclick="finalAddUserSub(' +
+      refNo +
+      ", '" +
+      type +
+      '\')" class="btn btn-success AddToListSub float-right m-2" data-dismiss="modal">Add</button>'
+  );
+} //end loadUsersSubModel()
 
 //-----------------------------------------------Delete users
 $(document).on("click", ".deleteStaffBtn", function () {
@@ -116,37 +153,61 @@ $("#loadSearchPatients").click(function () {
 //-----------------------------------------------Add Patient to list
 $(document).on("click", ".addTOListP", function () {
   let refNo = $(this).val();
+  loadUsersSubModel(refNo, "addTOListP");
+  $("#myModalSub").modal("show");
+});
 
-  if (true) {
+//Add users to waiting list after small model selection
+function finalAddUserSub(refNo, type) {
+  let selectDestinationSub = $(".selectDestinationSub").val();
+  let selectTypeSub = $(".selectTypeSub").val();
+
+  if (selectTypeSub && selectDestinationSub) {
     $.ajax({
       url: "db/addRemoveDelete.php",
       type: "POST",
       data: {
         refNo: refNo,
-        type: "addTOListP",
-        rType: "Normal",
-        destination: "Nurse",
+        type: type,
+        rType: selectTypeSub,
+        destination: selectDestinationSub,
       },
       success: function (result) {
         console.log(result);
-        if (result === "success") {
-          $(this).remove();
-          $(".addRemovePcell" + refNo).html(
-            '<button value="' +
-              refNo +
-              '" class="m-0 bg-transparent border-0 text-dark underline removeFromListP" title="Remove patient from queue">Remove</button>'
-          );
-          displayAlertMsg("Patient added to queue", true);
-        } else {
-          displayAlertMsg("Failed to add. Try again", false);
+        if (type === "addTOListP") {
+          if (result === "success") {
+            $(this).remove();
+            $(".addRemovePcell" + refNo).html(
+              '<button value="' +
+                refNo +
+                '" class="m-0 bg-transparent border-0 text-dark underline removeFromListP" title="Remove patient from queue">Remove</button>'
+            );
+            displayAlertMsg("Patient added to queue", true);
+          } else {
+            displayAlertMsg("Failed to add. Reload page & try again", false);
+          }
+        } else if (type === "addTOListS") {
+          if (result === "success") {
+            $(this).remove();
+            $(".addRemoveScell" + refNo).html(
+              '<button value="' +
+                refNo +
+                '" class="m-0 bg-transparent border-0 text-dark underline removeFromListS" title="Remove staff member from queue">Remove</button>'
+            );
+            displayAlertMsg("Staff member added to queue", true);
+          } else {
+            displayAlertMsg("Failed to add. Reload page & try again", false);
+          }
         }
       },
       error: function (error) {
         displayAlertMsg("Error occurred while loading data", false);
       },
     });
+  } else {
+    alert("Please select options before adding");
   }
-});
+} //end finalAddUserSub()
 
 //-----------------------------------------------Remove patient from list
 $(document).on("click", ".removeFromListP", function () {
@@ -171,7 +232,7 @@ $(document).on("click", ".removeFromListP", function () {
         );
         displayAlertMsg("Patient removed from queue", false);
       } else {
-        displayAlertMsg("Failed to remove. Try again", false);
+        displayAlertMsg("Failed to remove. Reload page & try again", false);
       }
     },
     error: function (error) {
@@ -183,33 +244,8 @@ $(document).on("click", ".removeFromListP", function () {
 //-----------------------------------------------Add Staff to list
 $(document).on("click", ".addTOListS", function () {
   let refNo = $(this).val();
-  $.ajax({
-    url: "db/addRemoveDelete.php",
-    type: "POST",
-    data: {
-      refNo: refNo,
-      type: "addTOListS",
-      rType: "Normal",
-      destination: "Nurse",
-    },
-    success: function (result) {
-      console.log(result);
-      if (result === "success") {
-        $(this).remove();
-        $(".addRemoveScell" + refNo).html(
-          '<button value="' +
-            refNo +
-            '" class="m-0 bg-transparent border-0 text-dark underline removeFromListS" title="Remove staff member from queue">Remove</button>'
-        );
-        displayAlertMsg("Staff member added to queue", true);
-      } else {
-        displayAlertMsg("Failed to add. Try again", false);
-      }
-    },
-    error: function (error) {
-      displayAlertMsg("Error occurred while loading data", false);
-    },
-  });
+  loadUsersSubModel(refNo, "addTOListS");
+  $("#myModalSub").modal("show");
 });
 
 //-----------------------------------------------Remove Staff from list
@@ -235,7 +271,7 @@ $(document).on("click", ".removeFromListS", function () {
         );
         displayAlertMsg("Staff member removed from queue", false);
       } else {
-        displayAlertMsg("Failed to remove. Try again", false);
+        displayAlertMsg("Failed to remove. Reload page & try again", false);
       }
     },
     error: function (error) {
@@ -258,7 +294,7 @@ $(document).on("click", ".deletePatient", function () {
         $(".deleteListRow" + refNo).remove();
         displayAlertMsg("Patient records deleted", true);
       } else {
-        displayAlertMsg("Failed to remove. Try again", false);
+        displayAlertMsg("Failed to remove. Reload page & try again", false);
       }
     },
     error: function (error) {
@@ -266,3 +302,65 @@ $(document).on("click", ".deletePatient", function () {
     },
   });
 });
+
+//-----------------------------------------------loadPatientsList
+$(document).ready(function () {
+  loadPatientsList();
+  window.setInterval(function () {
+    loadPatientsList();
+  }, 5000);
+});
+
+function loadPatientsList() {
+  $.ajax({
+    url: "db/loadPatientsList.php",
+    type: "POST",
+    data: { data: "jdslk" },
+    success: function (result) {
+      console.log("result", result);
+      $("#loadPatientsList").html(result);
+    },
+    error: function (error) {
+      displayAlertMsg("Error occurred while loading data", false);
+    },
+  });
+} //end loadUsers()
+
+//-----------------------------------------------Call Patient Into Office
+$(document).on("click", ".callNextPatientBtn", function () {
+  let id = $("#hiddenFirstPatientIdInput").val();
+  $.ajax({
+    url: "db/callNextPatient.php",
+    type: "POST",
+    data: { data: id },
+    success: function (result) {
+      console.log(result);
+      if (result !== "error" && result !== "occupied" && result.includes("go to")) {
+        audio(result);
+        $(".firstCallClass").remove();
+        $(".audioBtn").hide();
+        displayAlertMsg("Patient Called", true);
+        setTimeout(function () {
+          window.location.href = "../index.php";
+        }, 5000);
+      } else if (result === "occupied") {
+        displayAlertMsg("Office is occupied. Try again later", false);
+      } else {
+        displayAlertMsg("Failed to call. Reload page & try again", false);
+      }
+    },
+    error: function (error) {
+      displayAlertMsg("Error occurred while loading data", false);
+    },
+  });
+});
+
+$(document).on("click", ".audioBtn", function () {
+  let text = $(this).val();
+  audio(text);
+});
+
+function audio(text) {
+  var msg = new SpeechSynthesisUtterance(text);
+  window.speechSynthesis.speak(msg);
+}
