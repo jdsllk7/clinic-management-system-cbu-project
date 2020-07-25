@@ -9,9 +9,9 @@ if (isset($data)) {
     $html = '';
 
     if($rDestination == 'Receptionist'){
-        $patients = mysqli_query($conn, "SELECT * FROM pRecords WHERE rStatus LIKE '1' ORDER BY rType ASC, rId ASC");
+        $patients = mysqli_query($conn, "SELECT * FROM pRecords WHERE rStatus LIKE '1' ORDER BY rType ASC, pType ASC, rId ASC");
     }else{
-        $patients = mysqli_query($conn, "SELECT * FROM pRecords WHERE rStatus LIKE '1' AND rDestination LIKE '$rDestination' ORDER BY rType ASC, rId ASC");
+        $patients = mysqli_query($conn, "SELECT * FROM pRecords WHERE rStatus LIKE '1' AND rDestination LIKE '$rDestination' ORDER BY rType ASC, pType ASC, rId ASC");
     }
 
     if (mysqli_num_rows($patients) > 0) {
