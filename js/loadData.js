@@ -344,7 +344,7 @@ $(document).on("click", ".callNextPatientBtn", function () {
           window.location.href = "../index.php";
         }, 5000);
       } else if (result === "occupied") {
-        displayAlertMsg("Office is occupied. Try again later", false);
+        displayAlertMsg("Your office is occupied. Go back to your office & finish attending to your patient", false);
       } else {
         displayAlertMsg("Failed to call. Reload page & try again", false);
       }
