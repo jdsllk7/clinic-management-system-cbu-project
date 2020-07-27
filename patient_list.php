@@ -26,31 +26,31 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
         }
         ?>
 
-        <h2 class="col-md-12 text-dark left">Patients Queue</h3>
+        <h2 class="col-md-12 text-dark left mb-3">Patients Queue (<?php echo $_COOKIE["sTitle"];?>)</h2>
 
 
-          <div>
-            <table class="table table-striped table-bordered table-hover font-large">
-              <thead>
-                <tr>
-                  <th class="text-center">No.</th>
-                  <th class="text-center">Ref No.</th>
-                  <th class="text-center">Full Name</th>
-                  <?php
-                  if ($_COOKIE["sTitle"] == 'Receptionist') {
-                    echo '<th class="text-center">Next Office</th>';
-                  } else {
-                    echo '<th class="text-center">Sex</th>';
-                  }
-                  ?>
-                  <th class="text-center">Type</th>
-                </tr>
-              </thead>
-              <tbody id="loadPatientsList">
+        <div>
+          <table class="table table-striped table-bordered table-hover font-large">
+            <thead>
+              <tr>
+                <th class="text-center">No.</th>
+                <th class="text-center">SIN / I.D No.</th>
+                <th class="text-center">Full Name</th>
+                <?php
+                if ($_COOKIE["sTitle"] == 'Receptionist') {
+                  echo '<th class="text-center">Next Office</th>';
+                } else {
+                  echo '<th class="text-center">Sex</th>';
+                }
+                ?>
+                <th class="text-center">Type</th>
+              </tr>
+            </thead>
+            <tbody id="loadPatientsList">
 
-              </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

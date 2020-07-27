@@ -57,17 +57,19 @@ include 'db/vars.php';
                         <?php
                         if (isset($_COOKIE["admin"]) && !isset($_COOKIE["sId"])) {
                             echo '<a class="btn-sm btn-link ml-2" href="#!" id="loadUsers" data-toggle="modal" data-target="#myModal">VIEW STAFF</a>';
+                            echo '<a class="btn-sm btn-link ml-2 text-danger" href="db/emptyOffice.php">CLEAR ALL OFFICES</a>';
                         }
-                        if (isset($_COOKIE["audio"])) {
+                        if (isset($_COOKIE["audio"]) && isset($_COOKIE["sId"])) {
                             echo '<button class="btn-sm btn-link ml-2 hand bg-transparent border-0 audioBtn" value="' . $_COOKIE["audio"] . '">&#x1F50A</button>';
+                            echo '<a class="btn-sm btn-link ml-2 text-danger" href="db/emptyOffice.php">CLEAR OFFICE</a>';
                         }
                         if (!isset($_COOKIE["admin"]) && isset($_COOKIE["sId"])) {
-                            echo '<a class="btn-sm btn-link ml-2" href="index.php">OFFICE</a>';
+                            echo '<a class="btn-sm btn-link ml-2 text-success" href="index.php">ENTER OFFICE</a>';
                             echo '<a class="btn-sm btn-link ml-2" href="patient_list.php">QUEUE</a>';
                             echo '<a class="btn-sm btn-link ml-2" href="#!" onclick="displayAlertMsgPhp(\'Logged in as ' . $_COOKIE["sFName"] . ' ' . $_COOKIE["sLName"] . ' (' . $_COOKIE["sTitle"] . ') \t Staff_ID: ' . $_COOKIE["sNo"] . '\',true)">Hi ' . $_COOKIE["sFName"] . '</a>';
                         }
                         if (isset($_COOKIE["admin"]) || isset($_COOKIE["sId"])) {
-                            echo '<a class="btn-sm btn-link ml-2" href="db/logOut.php">LOGOUT</a>';
+                            echo '<a class="btn-sm btn-link ml-2 text-danger" href="db/logOut.php">LOGOUT</a>';
                         }
                         ?>
 

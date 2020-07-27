@@ -97,7 +97,7 @@ $(document).ready(function () {
             $("#addToListBtnForm").trigger("reset");
           } else if (result === "fail") {
             displayAlertMsg(
-              "Patient with ref no: " + pReg + " already exists",
+              "Patient with I.D No.: " + pReg + " already exists",
               false
             );
           } else {

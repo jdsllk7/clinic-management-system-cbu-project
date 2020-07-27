@@ -69,7 +69,7 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class="text-white text-bold">Reference No.</label>
+                                <label class="text-white text-bold">SIN / I.D Number</label>
                                 <input type="number" name="pReg" class="form-control" placeholder="" autocomplete="off">
                             </div>
                         </div>
