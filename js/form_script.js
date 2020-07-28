@@ -206,13 +206,23 @@ $(document).on("click", "#sendToNextOffice", function (e) {
 });
 
 $(document).on("click", "#sendToLab", function (e) {
+  let labReason = $(".labReason").val();
+  if (!labReason) {
+    return alert("Please provide a comment");
+  }
+
+  $("input[name=labReason]").val(labReason);
   $("input[name=nextOffice]").val("toLab");
 
-  console.log($("input[name=rId]").val(), $("input[name=nextOffice]").val());
-
+  console.log(
+    $("input[name=rId]").val(),
+    $("input[name=nextOffice]").val(),
+    $("input[name=labReason]").val()
+  );
   if (
-    !$("input[name=rId]").val() &&
-    $("input[name=nextOffice]").val() === "toLab"
+    !$("input[name=rId]").val() ||
+    !$("input[name=labReason]").val() ||
+    $("input[name=nextOffice]").val() !== "toLab"
   ) {
     return displayAlertMsg(
       "Fill in the form correctly before you submit",
@@ -222,3 +232,24 @@ $(document).on("click", "#sendToLab", function (e) {
     return $("#nextOfficeForm").submit();
   }
 });
+
+function whatToTestLab() {
+  $(".modal-title-sub").html("");
+  $(".modal-title-sub").text("");
+  $(".modal-body-sub").html("");
+  $(".modal-body-sub").text("");
+
+  let body =
+    '<div class="form-group col-md-12">' +
+    '<br><label class="text-dark text-bold">Enter What to Test For</label>' +
+    '<textarea class="form-control labReason" rows="5" cols="40" placeholder="Type here..."></textarea>' +
+    "</div>";
+
+  $(".modal-title-sub").text("Request for Lab Tests");
+  $(".modal-body-sub").html(body);
+  $(".modal-footer-sub").html(
+    '<button type="button" class="btn btn-primary float-right m-2" id="sendToLab" data-dismiss="modal">Submit Request</button>'
+  );
+  $("#myModalSub").modal("show");
+  console.log("whatToTestLab()");
+} //whatToTestLab()

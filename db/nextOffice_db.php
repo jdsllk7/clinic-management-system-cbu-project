@@ -85,6 +85,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset
         }
     } elseif ($_POST["nextOffice"] == 'toLab') {
 
+        if(isset($_POST["labReason"])){
+            setcookie('labReason', $_POST["labReason"], time() + (86400 * 30), "/");
+        }else{
+            header('Location: ../doctor.php?msg=ERROR: Please provide a comment on what the lab technician should test for&type=false');
+        }
+
         $sql = "UPDATE pRecords SET rStatus = '1', rDestination = 'Lab Technician' WHERE rId = $rId";
 
         if (mysqli_query($conn, $sql)) {
@@ -170,6 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset
                 setcookie('pType', '', time() - 3600, "/");
                 setcookie('pId', '', time() - 3600, "/");
                 setcookie('audio', '', time() - 3600, "/");
+                setcookie('labReason', '', time() - 3600, "/");
 
                 header('Location: ../patient_list.php?msg=SUCCESS: Patient Sent back to Doctor\'s office&type=true');
             }

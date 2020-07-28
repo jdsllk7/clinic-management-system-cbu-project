@@ -70,6 +70,9 @@ include 'db/connect.php';
                         if (isset($_COOKIE["admin"]) || isset($_COOKIE["sId"])) {
                             echo '<a class="btn-sm btn-link ml-2 text-danger" href="db/logOut.php">LOGOUT</a>';
                         }
+                        if (!isset($_COOKIE["admin"]) && !isset($_COOKIE["sId"])) {
+                            echo '<a class="btn-sm btn-link ml-2" href="credit.php">CREDIT</a>';
+                        }
                         ?>
 
                     </nav>

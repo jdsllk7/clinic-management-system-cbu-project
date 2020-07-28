@@ -89,12 +89,13 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                                 <textarea class="form-control" name="rPrescription" rows="4" placeholder="Enter Prescription..."></textarea>
                             </div>
                         </div>
+                        <input type="hidden" name="labReason" value="">
                         <input type="hidden" name="nextOffice" value="toPharmacist">
                         <input type="hidden" name="rId" value="<?php if (isset($_COOKIE["rId"])) {
                                                                     echo $_COOKIE["rId"];
                                                                 } ?>">
                         <div class="regerv_btn form-group row">
-                            <a href="#!" class="btn_2 d-none d-lg-block mr-2" style="width: 49%;" id="sendToLab">Send to Lab</a>
+                            <a href="#!" class="btn_2 d-none d-lg-block mr-2" style="width: 49%;" onclick="whatToTestLab()">Request For Lab Tests</a>
                             <a href="#!" class="btn_2 d-none d-lg-block" style="width: 49%;" id="sendToNextOffice">Send to Pharmacy</a>
                         </div>
                         <br>

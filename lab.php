@@ -70,6 +70,13 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
                                 <br>
                             </div>
 
+                            <h3 class="col-md-12 text-white">What to Test For</h3>
+                            <div class="form-group col-md-12">
+                                <textarea class="form-control disabled" disabled><?php if (isset($_COOKIE["labReason"])) {
+                                                                    echo $_COOKIE["labReason"];
+                                                                } ?></textarea>
+                            </div>
+                            <br>
                             <h3 class="col-md-12 text-white">Lab Results</h3>
                             <div class="form-group col-md-12">
                                 <textarea class="form-control" name="rLabResults" rows="4" placeholder="Enter lab results..."></textarea>
