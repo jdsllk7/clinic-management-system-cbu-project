@@ -90,7 +90,7 @@
                                 <h3>Chipeko Muyembe</h3>
 
                                 <!-- INSERT TITLE HERE -->
-                                <p>Doctor</p>
+                                <p>Project Position</p>
 
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                 <h3>Henry Mukuka</h3>
 
                                 <!-- INSERT TITLE HERE -->
-                                <p>Doctor</p>
+                                <p>Project Position</p>
 
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                                 <h3>Mary Mwamba</h3>
 
                                 <!-- INSERT TITLE HERE -->
-                                <p>Doctor</p>
+                                <p>Project Position</p>
 
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                 <h3>Kalaluka Chipoya</h3>
 
                                 <!-- INSERT TITLE HERE -->
-                                <p>Doctor</p>
+                                <p>Project Position</p>
 
                             </div>
                         </div>
