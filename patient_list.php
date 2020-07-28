@@ -1,9 +1,9 @@
-<?php include 'header.php'; ?>
 <?php
 if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
   header('Location:db/logOut.php');
 }
 ?>
+<?php include 'header.php'; ?>
 
 
 

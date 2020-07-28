@@ -1,4 +1,3 @@
-<?php include 'header.php'; ?>
 <?php
 if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
     header('Location:index.php');
@@ -17,6 +16,7 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
     }
 }
 ?>
+<?php include 'header.php'; ?>
 
 <!-- banner part start-->
 <section class="banner_part">

@@ -1,5 +1,7 @@
 <?php
 
+include 'connect.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset($_POST["rId"])) {
 
     $rId = $_POST["rId"];
@@ -41,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset
                 setcookie('pId', '', time() - 3600, "/");
                 setcookie('audio', '', time() - 3600, "/");
 
-                header('Location: patient_list.php?msg=SUCCESS: Patient Sent to Doctor\'s office&type=true');
+                header('Location: ../patient_list.php?msg=SUCCESS: Patient Sent to Doctor\'s office&type=true');
             }
         }
     } elseif ($_POST["nextOffice"] == 'toPharmacist') {
@@ -78,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset
                 setcookie('pId', '', time() - 3600, "/");
                 setcookie('audio', '', time() - 3600, "/");
 
-                header('Location: patient_list.php?msg=SUCCESS: Patient Sent to the Pharmacy&type=true');
+                header('Location: ../patient_list.php?msg=SUCCESS: Patient Sent to the Pharmacy&type=true');
             }
         }
     } elseif ($_POST["nextOffice"] == 'toLab') {
@@ -105,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset
             setcookie('pId', '', time() - 3600, "/");
             setcookie('audio', '', time() - 3600, "/");
 
-            header('Location: patient_list.php?msg=SUCCESS: Patient Sent to the lab&type=true');
+            header('Location: ../patient_list.php?msg=SUCCESS: Patient Sent to the lab&type=true');
         }
     } elseif ($_POST["nextOffice"] == 'toFinish') {
 
@@ -137,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset
             setcookie('pId', '', time() - 3600, "/");
             setcookie('audio', '', time() - 3600, "/");
 
-            header('Location: patient_list.php?msg=SUCCESS: Finished attending to patient&type=true');
+            header('Location: ../patient_list.php?msg=SUCCESS: Finished attending to patient&type=true');
         }
     } elseif ($_POST["nextOffice"] == 'backToDoctor') {
         if (
@@ -169,8 +171,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nextOffice"]) && isset
                 setcookie('pId', '', time() - 3600, "/");
                 setcookie('audio', '', time() - 3600, "/");
 
-                header('Location: patient_list.php?msg=SUCCESS: Patient Sent back to Doctor\'s office&type=true');
+                header('Location: ../patient_list.php?msg=SUCCESS: Patient Sent back to Doctor\'s office&type=true');
             }
+        }
+    }else{
+        if ($_COOKIE["sTitle"] == 'Nurse') {
+            header('Location: ../nurse.php?msg=ERROR: Patient not set. Reload the page and try again&type=false');
+        } elseif ($_COOKIE["sTitle"] == 'Doctor') { 
+            header('Location: ../doctor.php?msg=ERROR: Patient not set. Reload the page and try again&type=false');
+        } elseif ($_COOKIE["sTitle"] == 'Lab Technician') {
+            header('Location: ../lab.php?msg=ERROR: Patient not set. Reload the page and try again&type=false');
+        } elseif ($_COOKIE["sTitle"] == 'Pharmacist') {
+            header('Location: ../pharmacy.php?msg=ERROR: Patient not set. Reload the page and try again&type=false');
+        }elseif ($_COOKIE["sTitle"] == 'Receptionist'){
+            header('Location: ../add_patient.php?msg=ERROR: Patient not set. Reload the page and try again&type=false');
         }
     }
 }//end if(POST)

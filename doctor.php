@@ -1,4 +1,3 @@
-<?php include 'header.php'; ?>
 <?php
 if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
     header('Location:db/logOut.php');
@@ -15,6 +14,7 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
     }
 }
 ?>
+<?php include 'header.php'; ?>
 <!--::regervation_part start::-->
 <section class="regervation_part section_padding">
     <div class="container">
@@ -22,8 +22,7 @@ if (!isset($_COOKIE["sId"]) && !isset($_COOKIE["admin"])) {
         <div class="row align-items-center regervation_content">
             <div class="col-lg-12">
                 <div class="regervation_part_iner">
-                    <?php include 'db/nextOffice_db.php'; ?>
-                    <form method="post" id="nextOfficeForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="on">
+                    <form method="post" id="nextOfficeForm" action="db/nextOffice_db.php" autocomplete="on">
                         <br>
                         <div class="form-row">
                             <h3 class="col-md-12 text-white">Patient Details</h3>

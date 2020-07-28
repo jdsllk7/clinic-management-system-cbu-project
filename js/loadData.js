@@ -308,7 +308,7 @@ $(document).ready(function () {
   loadPatientsList();
   window.setInterval(function () {
     loadPatientsList();
-  }, 5000);
+  }, 3000);
 });
 
 function loadPatientsList() {
@@ -342,7 +342,7 @@ $(document).on("click", ".callNextPatientBtn", function () {
         displayAlertMsg("Patient Called", true);
         setTimeout(function () {
           window.location.href = "../index.php";
-        }, 5000);
+        }, 3000);
       } else if (result === "occupied") {
         displayAlertMsg("Your office is occupied. Go back to your office & finish attending to your patient", false);
       } else {
